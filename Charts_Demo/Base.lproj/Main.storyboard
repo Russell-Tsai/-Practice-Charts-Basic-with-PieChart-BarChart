@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +14,73 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Charts_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="omC-Ao-4QP" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="182" width="335" height="222.5"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="m95-CN-WoO">
+                                <rect key="frame" x="87.5" y="50" width="200" height="90"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="p2n-0c-vfe">
+                                        <rect key="frame" x="-2" y="0.0" width="204" height="31"/>
+                                        <connections>
+                                            <action selector="renderCharts" destination="BYZ-38-t0r" eventType="valueChanged" id="KSt-cV-k8L"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IXo-sV-AYy">
+                                        <rect key="frame" x="-2" y="30" width="204" height="31"/>
+                                        <connections>
+                                            <action selector="renderCharts" destination="BYZ-38-t0r" eventType="valueChanged" id="LoJ-3t-c8u"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hnT-uR-HED">
+                                        <rect key="frame" x="-2" y="60" width="204" height="31"/>
+                                        <connections>
+                                            <action selector="renderCharts" destination="BYZ-38-t0r" eventType="valueChanged" id="9Ea-q9-z4w"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="R4a-0P-oi9"/>
+                                    <constraint firstAttribute="height" constant="90" id="uFe-c6-vGP"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujw-Rn-2Yi" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="424.5" width="335" height="222.5"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ujw-Rn-2Yi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BFd-qM-gRb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="omC-Ao-4QP" secondAttribute="trailing" constant="20" id="KRU-Yz-c8V"/>
+                            <constraint firstItem="ujw-Rn-2Yi" firstAttribute="top" secondItem="omC-Ao-4QP" secondAttribute="bottom" constant="20" id="NQ4-bE-DLo"/>
+                            <constraint firstItem="omC-Ao-4QP" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1/3" id="PAv-tw-7F1"/>
+                            <constraint firstItem="m95-CN-WoO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="POQ-pN-jCE"/>
+                            <constraint firstItem="omC-Ao-4QP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="d89-Uk-Glo"/>
+                            <constraint firstItem="m95-CN-WoO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="frx-lJ-Ldi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ujw-Rn-2Yi" secondAttribute="trailing" constant="20" id="p7G-58-WGX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ujw-Rn-2Yi" secondAttribute="bottom" constant="20" id="tE5-xs-f44"/>
+                            <constraint firstItem="ujw-Rn-2Yi" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1/3" id="xbr-dp-8dJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="barChartView" destination="ujw-Rn-2Yi" id="dKo-qC-jrn"/>
+                        <outlet property="number1" destination="p2n-0c-vfe" id="qET-cL-YA5"/>
+                        <outlet property="number2" destination="IXo-sV-AYy" id="Yep-wq-wgd"/>
+                        <outlet property="number3" destination="hnT-uR-HED" id="0bA-8H-Lti"/>
+                        <outlet property="pieChartView" destination="omC-Ao-4QP" id="YBM-CK-I5w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
